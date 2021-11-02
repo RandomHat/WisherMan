@@ -1,5 +1,7 @@
 package com.example.wisherman.model;
 
+import java.util.Objects;
+
 public class Wish {
     private String title;
     private String link;
@@ -23,6 +25,19 @@ public class Wish {
                 ", price='" + price + '\'' +
                 ", reserved=" + reserved +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Wish wish = (Wish) o;
+        return title.equals(wish.title) && link.equals(wish.link) && Objects.equals(price, wish.price);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, link, price);
     }
 
     public String getTitle() {
