@@ -1,4 +1,4 @@
 package com.example.wisherman.repositories;
 
-public class DBConnection {
+public class WishListRepository {
 }
