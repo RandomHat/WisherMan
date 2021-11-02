@@ -1,27 +1,38 @@
 package com.example.wisherman.model;
 
+import org.apache.logging.log4j.util.Strings;
+
 import java.util.Objects;
 
 public class Wish {
     private String title;
-    private String link;
     private String price;
-    private boolean reserved;
+    private String url;
+    private boolean reserved = false;
 
-    public Wish(String title, String link, String price, boolean reserved) {
+    public Wish(String title, String link, String price) {
         this.title = title;
-        this.link = link;
+        this.url = link;
         this.price = price;
-        this.reserved = reserved;
+        System.out.println("in Wish Constructor");
     }
 
-    public Wish(){}
+    public Wish(){
+        System.out.println("in empty wish constructor");
+    }
+
+    //testet virker nu
+    public boolean isValidWish(Wish wish){
+        return wish != null && Strings.isNotBlank(wish.getTitle())
+                && Strings.isNotBlank(wish.getUrl())
+                && Strings.isNotBlank(wish.getPrice());
+    }
 
     @Override
     public String toString() {
         return "Wish{" +
                 "title='" + title + '\'' +
-                ", link='" + link + '\'' +
+                ", link='" + url + '\'' +
                 ", price='" + price + '\'' +
                 ", reserved=" + reserved +
                 '}';
@@ -32,12 +43,12 @@ public class Wish {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Wish wish = (Wish) o;
-        return title.equals(wish.title) && link.equals(wish.link) && Objects.equals(price, wish.price);
+        return title.equals(wish.title) && url.equals(wish.url) && Objects.equals(price, wish.price);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, link, price);
+        return Objects.hash(title, url, price);
     }
 
     public String getTitle() {
@@ -48,12 +59,12 @@ public class Wish {
         this.title = title;
     }
 
-    public String getLink() {
-        return link;
+    public String getUrl() {
+        return url;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getPrice() {
