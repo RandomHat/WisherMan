@@ -1,2 +1,5 @@
-package com.example.wisherman.model;public class test {
+package com.example.wisherman.model;
+
+public class test {
+    // blalsldfasdf
 }
