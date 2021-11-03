@@ -1,20 +1,73 @@
-body {
-    background-color: rgb(81,152,114);
+body{
+    background-color: #FE8529;
+    background-color: #771D00;
+    background-color: #F4F0E8;
+    background-color: #eeb34b;
+    background-color: #1a1a1a;
+    background-color: #eeb34b;
+    background: rgba(120,255,255,0.5);
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100%;
+}
+a{
+    text-decoration: none;
+}
+a.nav-link:visited
+{
+    text-decoration: none;
+}
+header{
+    background: rgba(100,100,300,1.5);
+}
+header, footer{
+    max-width: 100%;
+    height: 100px;
+}
+footer{
+    height: 200px;
+}
+
+.navbar{
+    display:flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    min-height: 100%;
+    margin-bottom: 5px;
+}
+
+.navbar-sign-in-choice{
+    display: flex;
+    justify-content: center;
+    border-radius:25px;
+    background-color: rgb(47, 8, 66);
+    height: 50px;
+    width: 150px;
+    margin-bottom: 5px;
+}
+
+.link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius:25px;
+    height: 50px;
+    width: 150px;
+    color: rgb(164, 180, 148);
 }
 
 .choice-block{
 
     display: flex;
-    justify-content: center;
-    margin-top: 100px;
-    min-width:900px;
+    max-width: 100%;
 }
 .choice{
-    min-width:450px;
-    display: table;
     text-align: center;
-    width: 400px;
-    height: 400px;
+    width: 50%;
+    height: 500px;
 }
 
 .left{
