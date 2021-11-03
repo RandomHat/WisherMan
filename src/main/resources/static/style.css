@@ -128,3 +128,37 @@ footer{
     width: 100%;
     text-align:center;
 }
+.footer-container{
+    display:flex;
+    justify-content: center;
+    min-height: 100%;
+}
+.socials, .support, .info{
+    width: 192px;
+}
+.socials{
+    margin: 20px;
+    display: flex;
+    align-items: center;
+}
+.footer-menu{
+    display: flex;
+}
+.support{
+    margin: 20px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.footer-link{
+    padding: 3px;
+}
+
+.info{
+    margin: 20px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+}
