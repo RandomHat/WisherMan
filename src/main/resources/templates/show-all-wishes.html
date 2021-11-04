@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show All Wishes</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1>All Wishes</h1>
+    <table class="wishlist">
+        <tr>
+            <th>Wish ID</th>
+            <th>Wish Title</th>
+            <th>Wish URL</th>
+            <th>Wish Price</th>
+            <th>Wish Reserved?</th>
+            <th>Wishlist ID</th>
+        </tr>
+        <tr th:each="wish : ${listOfWishes}">
+            <td th:text="${wish.getId}"></td>
+            <td th:text="${wish.getTitle}"></td>
+            <td th:text="${wish.getUrl}"></td>
+            <td th:text="${wish.getPrice}"></td>
+            <td th:text="${wish.isReserved}"></td>
+            <td th:text="${wish.getWishListID}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

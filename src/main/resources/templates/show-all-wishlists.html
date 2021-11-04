@@ -22,7 +22,7 @@
             <th>Wishlist Title</th>
             <th>Wishlist Owner ID</th>
         </tr>
-        <tr th:each="wishlist : ${wishLists}">
+        <tr th:each="wishlist : ${wishListList}">
             <td th:text="${wishlist.getIdwishlist}"></td>
             <td th:text="${wishlist.getListName}"></td>
             <td th:text="${wishlist.getUserid}"></td>

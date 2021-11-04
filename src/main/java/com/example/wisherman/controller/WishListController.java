@@ -5,14 +5,11 @@ import com.example.wisherman.repositories.WishListRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import java.util.ArrayList;
-import java.util.List;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.servlet.view.RedirectView;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -28,8 +25,8 @@ public class WishListController {
 
     @GetMapping("/wishlist/show-all-wishlists")
     public String showAllWishlists(Model model)   {
-        List<WishList> wishLists = wishlistrepository.getAllWishLists();
-        model.addAttribute("wishLists", wishLists);
+        List<WishList> wishListList = wishlistrepository.getAllWishLists();
+        model.addAttribute("wishListList", wishListList);
         return "show-all-wishlists";
     }
 

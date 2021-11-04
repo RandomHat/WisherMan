@@ -5,16 +5,21 @@ import org.apache.logging.log4j.util.Strings;
 import java.util.Objects;
 
 public class Wish {
+    private int id;
     private String title;
-    private String price;
     private String url;
+    private String price;
     private boolean reserved = false;
+    private int wishListID;
 
-    public Wish(String title, String link, String price) {
+    public Wish(int id, String title, String url, String price, boolean reserved, int wishListID) {
+        this.id = id;
         this.title = title;
-        this.url = link;
+        this.url = url;
         this.price = price;
-        System.out.println("in Wish Constructor");
+        this.reserved = reserved;
+        this.wishListID = wishListID;
+        System.out.println("Wish Constructor. Wish: " + this.title + " ID: " + this.id + " Constructed");
     }
 
     public Wish(){
@@ -51,32 +56,49 @@ public class Wish {
         return Objects.hash(title, url, price);
     }
 
-    public String getTitle() {
-        return title;
+
+    public int getId() {
+        return id;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getTitle() {
+        return title;
     }
 
     public String getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public boolean isReserved() {
+        return reserved;
     }
 
     public String getPrice() {
         return price;
     }
 
+    public int getWishListID() {
+        return wishListID;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     public void setPrice(String price) {
         this.price = price;
     }
 
-    public boolean isReserved() {
-        return reserved;
+    public void setWishListID(int wishListID) {
+        this.wishListID = wishListID;
     }
 
     public void setReserved(boolean reserved) {
