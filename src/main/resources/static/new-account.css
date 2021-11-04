@@ -1,0 +1,53 @@
+body{
+    margin: 0 0 0 0;
+}
+.outer-container{
+    height:800px;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    min-width: 100%;
+    display:flex;
+    border-top:2px groove rgba(11, 50, 54, 0.75);
+    border-bottom:2px groove rgba(11, 50, 54, 0.75);
+}
+
+.account-form-container{
+    display:flex;
+    width: 40%;
+    padding-top: 200px;
+    justify-content: center;
+}
+.picture-div{
+    width:100%;
+    height: 100%;
+    background-image: url("Attachments/img/login-picture.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
+}
+.login-picture{
+    width: 100%;
+    height: 100%;
+}
+
+.new-account-form{
+    display:table-cell;
+    justify-content: center;
+}
+.new-account-label{
+    display:table-cell;
+    min-width: 90px;
+}
+.new-account-submit {
+    cursor: pointer;
+}
+
+input{
+    padding:5px 10px;
+    border: 1px solid grey;
+    border-radius:5px;
+    outline: none;
+}
+.form-input ~ .form-input{
+    margin-top:10px;
+}

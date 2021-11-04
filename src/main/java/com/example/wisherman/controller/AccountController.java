@@ -14,12 +14,12 @@ import java.util.jar.Attributes;
 @Controller
 public class AccountController {
 
-    @GetMapping("/new_account")
+    @GetMapping("/new-account")
     public String newAccountView(){
         return "new-account";
     }
 
-    @PostMapping("/new_account")
+    @PostMapping("/new-account")
     public String createAccount(WebRequest requestFromUser){
         String username = requestFromUser.getParameter("username");
         String password = requestFromUser.getParameter("password");
@@ -31,7 +31,9 @@ public class AccountController {
         //UserService.addToDB(currentUser);
     return "redirect:/";
 
-
-
+    }
+    @GetMapping("/hp")
+    public String test(){
+        return "Template";
     }
 }

@@ -2,37 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>NewAccount</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/new-account.css">
+    <title>new-account</title>
 </head>
 <body>
-<div>
-    <form id="new-account-form" th:action="@{/new_account}" method="post">
-        <div class="form-group">
-            <label for="username">
-                Username*
-            </label>
-            <input id="username" name="username" type="text">
-            <label for="password">
-                Password*
-            </label>
-            <input id="password" name="password" type="text">
-            <label for="first-name">
-                First name*
-            </label>
-            <input id="first-name" name="firstName" type="text">
-            <label for="last-name">
-                Last name*
-            </label>
-            <input id="last-name" name="lastName" type="text">
-            <label for="email">
-                Last name*
-            </label>
-            <input id="email" name="email" type="text">
-            <input type="submit">
-        </div>
+<header>
 
-
-    </form>
+</header>
+<div class="outer-container">
+    <div class="picture-div">
+        <!-- <img alt="blabla" src="Attachments/img/login-picture.jpg"> -->
+    </div>
+    <div class="account-form-container">
+        <form id="new-account-form" th:action="@{/new-account}" method="post">
+            <div class="form-input">
+                <label class="new-account-label" for="username">
+                    Username*
+                </label>
+                <input class="new-account-input" id="username" name="username" type="text">
+            </div>
+            <div class="form-input">
+                <label class="new-account-label" for="password">
+                    Password*
+                </label>
+                <input class="new-account-input" id="password" name="password" type="text">
+            </div>
+            <div class="form-input">
+                <label class="new-account-label" for="first-name">
+                    First name*
+                </label>
+                <input class="new-account-input" id="first-name" name="firstName" type="text">
+            </div>
+            <div class="form-input">
+                <label class="new-account-label" for="last-name">
+                    Last name*
+                </label>
+                <input class="new-account-input" id="last-name" name="lastName" type="text">
+            </div>
+            <div class="form-input">
+                <label class="new-account-label" for="email">
+                    Email*
+                </label>
+                <input class="new-account-input" id="email" name="email" type="text">
+            </div>
+            <div class="form-input">
+                <input class="new-account-submit" type="submit" value="Create Account">
+            </div>
+        </form>
+    </div>
+    <footer>
+    </footer>
 </div>
 </body>
 </html>
