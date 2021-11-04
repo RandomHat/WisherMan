@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show User Wishlists</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1>User Wishlists</h1>
+    <table class="wishlist">
+        <tr>
+            <th>Wishlist ID</th>
+            <th>Wishlist Title</th>
+            <th>Wishlist Owner ID</th>
+        </tr>
+        <tr th:each="wishlist : ${wishListList}">
+            <td th:text="${wishlist.getIdwishlist}"></td>
+            <td th:text="${wishlist.getListName}"></td>
+            <td th:text="${wishlist.getUserid}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

@@ -13,6 +13,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
+import java.util.Optional;
 
 @Controller
 public class WishListController {
@@ -28,6 +29,13 @@ public class WishListController {
         List<WishList> wishListList = wishlistrepository.getAllWishLists();
         model.addAttribute("wishListList", wishListList);
         return "show-all-wishlists";
+    }
+
+    @GetMapping("/wishlist/show-user-wishlists")
+    public String showUserWishlists(@RequestParam Optional<Integer> id, Model model)   {
+        List<WishList> wishListList = wishlistrepository.getUserWishLists(1);       //insert user id
+        model.addAttribute("wishListList", wishListList);
+        return "show-user-wishlists";
     }
 
     @GetMapping("/wishlist/")

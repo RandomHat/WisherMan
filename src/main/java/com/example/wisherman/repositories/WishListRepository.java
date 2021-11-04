@@ -42,6 +42,28 @@ public class WishListRepository {
     }
 
 
+    public List<WishList> getUserWishLists(int id) {
+        wishListList = new ArrayList<>();
+        PreparedStatement pstmt = null;
 
+        try {
+            pstmt = conn.prepareStatement("SELECT * FROM wishlists WHERE user_id = (?)");
+            pstmt.setInt(1, id);
+            ResultSet resultSet = pstmt.executeQuery();
+
+            while (resultSet.next()) {
+                WishList wishlist = new WishList(
+                        resultSet.getInt("idwishlists"),
+                        resultSet.getString("list_name"),
+                        resultSet.getInt("user_id")
+                );
+                wishListList.add(wishlist);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return wishListList;
+    }
 
 }
