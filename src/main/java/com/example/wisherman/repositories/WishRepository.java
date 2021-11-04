@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class WishRepository {
@@ -44,6 +45,7 @@ public class WishRepository {
     }
 
     public List<Wish> getUserWishes(int id) {
+
         listOfWishes = new ArrayList<>();
         PreparedStatement pstmt = null;
 

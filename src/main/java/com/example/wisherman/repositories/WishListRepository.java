@@ -1,5 +1,6 @@
 package com.example.wisherman.repositories;
 
+import com.example.wisherman.model.Wish;
 import com.example.wisherman.model.WishList;
 import com.example.wisherman.utlility.DBConnection;
 import org.springframework.stereotype.Repository;
@@ -39,6 +40,8 @@ public class WishListRepository {
         }
         return wishListList;
     }
+
+
 
 
 }

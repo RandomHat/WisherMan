@@ -7,12 +7,14 @@ import com.example.wisherman.repositories.WishRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Controller
 public class WishController {
@@ -68,9 +70,9 @@ public class WishController {
         return "show-all-wishes";
     }
 
-    @GetMapping("/wishlist/show-all-user")
-    public String showUserWishes(Model model) {
-        List<Wish> listOfWishes = wishrepository.getUserWishes(1); //input userid
+    @GetMapping("/wishlist/show-user-wishes")
+    public String showUserWishes(@RequestParam Optional<Integer> id, Model model) {
+        List<Wish> listOfWishes = wishrepository.getUserWishes(1);          //input userid
         model.addAttribute("listOfWishes", listOfWishes);
         return "show-user-wishes";
     }
