@@ -1,0 +1,10 @@
+.wishlist {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 400px;
+}
+
+td, th{
+    border: 1px solid black;
+    padding: 10px;
+}
