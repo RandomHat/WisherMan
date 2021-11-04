@@ -1,5 +1,7 @@
 package com.example.wisherman.model;
 
+import org.apache.logging.log4j.util.Strings;
+
 import java.util.ArrayList;
 
 public class WishList {
@@ -9,6 +11,8 @@ public class WishList {
     public WishList(String listName) {
         this.listName = listName;
     }
+
+    public WishList(){};
 
     public void addWish(Wish wishToAdd){
         wishes.add(wishToAdd);
@@ -25,6 +29,10 @@ public class WishList {
                 break;
             }
         }
+    }
+
+    public boolean isValidWishList(WishList wishList) {
+        return wishList != null && Strings.isNotBlank(wishList.getListName());
     }
 
     public String getListName() {

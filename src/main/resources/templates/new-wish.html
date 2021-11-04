@@ -7,7 +7,7 @@
 <body>
     <h1>Creating new wish, enter details below: </h1>
 
-    <form action="#" th:action="@{/wishlist/create-wish}" method="post" th:object="${wish}">
+    <form action="#" th:action="@{/wishlist/new-wish}" method="post" th:object="${wish}">
         <label for="wish_title">Title</label>
         <input id="wish_title" name="wish" type="text" th:field="*{title}"><br><br>
 
@@ -18,7 +18,6 @@
         <input id="wish_url" name="wish" type="text" th:field="*{url}"><br><br>
 
         <button type="submit">Wish!</button>
-
 
     </form>
 </body>

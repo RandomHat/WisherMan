@@ -18,13 +18,13 @@ public class WishController {
         return "index";
     }
 
-    @GetMapping("/wishlist/create-wish")
+    @GetMapping("/wishlist/new-wish")
     public String createWishGet(Model model){
         model.addAttribute("wish", new Wish());
-        return "create-wish";
+        return "new-wish";
     }
 
-    @PostMapping("/wishlist/create-wish")
+    @PostMapping("/wishlist/new-wish")
     public RedirectView createWishPost(
             @ModelAttribute("wish") Wish wish,
             RedirectAttributes redirectAttributes) {
@@ -33,21 +33,21 @@ public class WishController {
         if (wish.isValidWish(wish)) {
             redirectAttributes.addFlashAttribute("wish", wish);
             System.out.println("inside true");
-            return new RedirectView("/wishlist/create-wish-success", true);
+            return new RedirectView("/wishlist/new-wish-success", true);
         } else {
-            return new RedirectView("/wishlist/create-wish", true);
+            return new RedirectView("/wishlist/new-wish", true);
         }
     }
 
-    @GetMapping("/wishlist/create-wish-success")
+    @GetMapping("/wishlist/new-wish-success")
     public String createWishSuccess(HttpServletRequest request, Model model)   {
         Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
         if (inputFlashMap != null) {
             Wish wish = (Wish) inputFlashMap.get("wish");
             model.addAttribute("wish", wish);
-            return "create-wish-success";
+            return "new-wish-success";
         } else {
-            return "create-wish";
+            return "new-wish";
         }
     }
 
