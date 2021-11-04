@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Registration Success</title>
+    <style>
+        span {
+            display: inline-block;
+            align-content: center;
+            width: 200px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div th:object="${wish}">
+    <h2>Success - Wish Created:</h2>
+    <span>Title: </span><span th:text="${wish.title}"></span><br/>
+    <span>Price: </span><span th:text="${wish.price}"></span><br/>
+    <span>Link: </span><span th:text="${wish.url}"></span><br/>
+</div>
+</body>
+</html>

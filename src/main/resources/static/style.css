@@ -1,15 +1,11 @@
 body{
-    background-color: #FE8529;
-    background-color: #771D00;
-    background-color: #F4F0E8;
-    background-color: #eeb34b;
-    background-color: #1a1a1a;
-    background-color: #eeb34b;
-    background: rgba(120,255,255,0.5);
-    background:white;
     background: radial-gradient(rgba(11, 50, 54, 0.75),rgba(184, 239, 226, 0.79));
     margin: 0;
     padding: 0;
+    font-family:Arial, sans-serif;
+}
+button,input{
+    font-family: inherit;
 }
 body{
     height: 100%;
@@ -62,7 +58,7 @@ footer{
 }
 
 .choice-block{
-    border-top:2px groove rgba(11, 50, 54, 0.75);;
+    border-top:2px groove rgba(11, 50, 54, 0.75);
     display: flex;
     max-width: 100%;
 }
@@ -107,7 +103,7 @@ footer{
 }
 .account-bg{
     transition: transform 1s;
-    background-image: url("../static/img/img.png");
+    background-image: url("Attachments/img/img.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position:center;
@@ -116,7 +112,7 @@ footer{
 }
 .explore-bg{
     transition: transform 1s;
-    background-image: url("../static/img/exploreWishLists.jpg");
+    background-image: url("Attachments/img/exploreWishLists.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position:center;
