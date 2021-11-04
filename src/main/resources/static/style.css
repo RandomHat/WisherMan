@@ -6,6 +6,8 @@ body{
     background-color: #1a1a1a;
     background-color: #eeb34b;
     background: rgba(120,255,255,0.5);
+    background:white;
+    background: radial-gradient(rgba(11, 50, 54, 0.75),rgba(184, 239, 226, 0.79));
     margin: 0;
     padding: 0;
 }
@@ -20,13 +22,14 @@ a.nav-link:visited
     text-decoration: none;
 }
 header{
-    background: rgba(100,100,300,1.5);
+
 }
 header, footer{
     max-width: 100%;
     height: 100px;
 }
 footer{
+
     height: 200px;
 }
 
@@ -43,7 +46,6 @@ footer{
     display: flex;
     justify-content: center;
     border-radius:25px;
-    background-color: rgb(47, 8, 66);
     height: 50px;
     width: 150px;
     margin-bottom: 5px;
@@ -60,7 +62,7 @@ footer{
 }
 
 .choice-block{
-
+    border-top:2px groove rgba(11, 50, 54, 0.75);;
     display: flex;
     max-width: 100%;
 }
@@ -86,8 +88,11 @@ footer{
     width: 200px;
     height: 50px;
     border-radius: 25px;
-    background-color: rgb(47, 8, 66);
-    color: rgb(164, 180, 148);
+    background: radial-gradient(rgb(62, 133, 133),#051375);
+    color: white;
+    font-size: 18px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
 #new-account{
@@ -132,6 +137,7 @@ footer{
     display:flex;
     justify-content: center;
     min-height: 100%;
+    border-top:2px groove rgba(11, 50, 54, 0.75);
 }
 .socials, .support, .info{
     width: 192px;
@@ -141,8 +147,12 @@ footer{
     display: flex;
     align-items: center;
 }
+.social-logo{
+    margin: 3px
+}
 .footer-menu{
     display: flex;
+    height: 120px;
 }
 .support{
     margin: 20px;

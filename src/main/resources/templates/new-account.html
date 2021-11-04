@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NewAccount</title>
+</head>
+<body>
+<div>
+    <form id="new-account-form" th:action="@{/new_account}" method="post">
+        <div class="form-group">
+            <label for="username">
+                Username*
+            </label>
+            <input id="username" name="username" type="text">
+            <label for="password">
+                Password*
+            </label>
+            <input id="password" name="password" type="text">
+            <label for="first-name">
+                First name*
+            </label>
+            <input id="first-name" name="firstName" type="text">
+            <label for="last-name">
+                Last name*
+            </label>
+            <input id="last-name" name="lastName" type="text">
+            <label for="email">
+                Last name*
+            </label>
+            <input id="email" name="email" type="text">
+            <input type="submit">
+        </div>
+
+
+    </form>
+</div>
+</body>
+</html>
