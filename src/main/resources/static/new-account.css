@@ -30,15 +30,15 @@ body{
     height: 100%;
 }
 
-.new-account-form{
+.account-form{
     display:table-cell;
     justify-content: center;
 }
-.new-account-label{
+.account-label{
     display:table-cell;
     min-width: 90px;
 }
-.new-account-submit {
+.account-submit {
     cursor: pointer;
 }
 

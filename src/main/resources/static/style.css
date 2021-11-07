@@ -17,9 +17,7 @@ a.nav-link:visited
 {
     text-decoration: none;
 }
-header{
 
-}
 header, footer{
     max-width: 100%;
     height: 100px;

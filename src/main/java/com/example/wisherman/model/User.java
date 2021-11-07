@@ -3,6 +3,7 @@ package com.example.wisherman.model;
 import java.util.HashMap;
 
 public class User {
+    private int userID;
     private String username;
     private String password;
     private String firstName;
@@ -18,6 +19,16 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+    }
+
+
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     public String getUsername() {

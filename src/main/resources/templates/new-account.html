@@ -8,46 +8,44 @@
 </head>
 <body>
 <header>
-
 </header>
 <div class="outer-container">
     <div class="picture-div">
-        <!-- <img alt="blabla" src="Attachments/img/login-picture.jpg"> -->
     </div>
     <div class="account-form-container">
-        <form id="new-account-form" th:action="@{/new-account}" method="post">
+        <form class="account-form" th:action="@{/new-account}" method="post">
             <div class="form-input">
-                <label class="new-account-label" for="username">
+                <label class="account-label" for="username">
                     Username*
                 </label>
-                <input class="new-account-input" id="username" name="username" type="text">
+                <input class="account-input" id="username" name="username" type="text">
             </div>
             <div class="form-input">
-                <label class="new-account-label" for="password">
+                <label class="account-label" for="password">
                     Password*
                 </label>
-                <input class="new-account-input" id="password" name="password" type="text">
+                <input class="account-input" id="password" name="password" type="text">
             </div>
             <div class="form-input">
-                <label class="new-account-label" for="first-name">
+                <label class="account-label" for="first-name">
                     First name*
                 </label>
-                <input class="new-account-input" id="first-name" name="firstName" type="text">
+                <input class="account-input" id="first-name" name="firstName" type="text">
             </div>
             <div class="form-input">
-                <label class="new-account-label" for="last-name">
+                <label class="account-label" for="last-name">
                     Last name*
                 </label>
-                <input class="new-account-input" id="last-name" name="lastName" type="text">
+                <input class="account-input" id="last-name" name="lastName" type="text">
             </div>
             <div class="form-input">
-                <label class="new-account-label" for="email">
+                <label class="account-label" for="email">
                     Email*
                 </label>
-                <input class="new-account-input" id="email" name="email" type="text">
+                <input class="account-input" id="email" name="email" type="text">
             </div>
             <div class="form-input">
-                <input class="new-account-submit" type="submit" value="Create Account">
+                <input class="account-submit" type="submit" value="Create Account">
             </div>
         </form>
     </div>

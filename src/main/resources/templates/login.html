@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/new-account.css">
+    <title>Title</title>
+</head>
+<body>
+<header>
+</header>
+<div class="outer-container">
+    <div class="picture-div">
+    </div>
+    <div class="account-form-container">
+        <form class="account-form" th:action="@{/login}" method="post">
+            <div class="form-input">
+                <label class="account-label" for="username">
+                    Username
+                </label>
+                <input class="account-input" id="username" name="username" type="text">
+            </div>
+            <div class="form-input">
+                <label class="account-label" for="password">
+                    Password
+                </label>
+                <input class="account-input" id="password" name="password" type="text">
+            </div>
+            <div class="form-input">
+                <input class="account-submit" type="submit" value="Login">
+            </div>
+        </form>
+    </div>
+    <footer>
+    </footer>
+</div>
+</body>
+</html>
