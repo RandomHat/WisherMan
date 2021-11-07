@@ -71,5 +71,26 @@ public class WishRepository {
         return listOfWishes;
     }
 
+    public boolean addWishToWishList(Wish wish) {
+        PreparedStatement pstmt = null;
+
+        try {
+            pstmt = conn.prepareStatement("INSERT INTO wishes (title, link, price, reserved, wishlist_id) VALUES (?, ?, ?, ?, ?)");
+
+
+            pstmt.setString(1, wish.getTitle());
+            pstmt.setString(2, wish.getUrl());
+            pstmt.setString(3, wish.getPrice());
+            pstmt.setInt(4, wish.isReservedInt());
+            pstmt.setInt(5, wish.getWishListID());
+
+            return pstmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
 
 }

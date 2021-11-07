@@ -69,8 +69,15 @@ public class Wish {
         return url;
     }
 
-    public boolean isReserved() {
+    public boolean isReservedBool() {
         return reserved;
+    }
+
+    public int isReservedInt() {
+        if (!reserved){
+            return 0;
+        }
+        return 1;
     }
 
     public String getPrice() {
