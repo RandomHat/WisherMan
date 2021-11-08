@@ -30,7 +30,8 @@ public class Wish {
     public boolean isValidWish(Wish wish){
         return wish != null && Strings.isNotBlank(wish.getTitle())
                 && Strings.isNotBlank(wish.getUrl())
-                && Strings.isNotBlank(wish.getPrice());
+                && Strings.isNotBlank(wish.getPrice())
+                && wish.getWishListID() != 0;
     }
 
     @Override
