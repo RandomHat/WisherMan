@@ -1,11 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Template</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h1>Welcome to WISHERMAN!</h1>
-    <span><a href="/wishlist/create-wish">wish for something!</a></span>
+<header>
+</header>
+<header>
+    <div class="navbar">
+        <div class="navbar-sign-in-choice">
+            <a class="choice-button-container" href="/login">
+                <button class="choice-button" type="button">
+                    Sign in
+                </button>
+            </a>
+        </div>
+    </div>
+</header>
+<div class="choice-block">
+    <div id="new-account" class="choice">
+        <div class="account-bg"></div>
+        <div class="button-alignment">
+            <a class="choice-button-container" href="/new-account">
+                <button class="choice-button" type="button">
+                    Your first wishlist!
+                </button>
+            </a>
+        </div>
+    </div>
+    <div id="explore-wishes" class="choice">
+        <div class="explore-bg"></div>
+        <div class="button-alignment">
+            <a class="choice-button-container" href="/wishlist/show-all-wishlists">
+                <button class="choice-button" type="button">
+                    explore wishlists!
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="footer-container">
+        <div class="footer-menu">
+            <div class="socials">
+                <a class="social-logo">
+                    <img alt="facebook" src="Attachments/img/SocialLogos/facebook-logo.png">
+                </a>
+                <a class="social-logo">
+                    <img alt="instagram" src="Attachments/img/SocialLogos/instagram-logo.png">
+                </a>
+                <a class="social-logo">
+                    <img alt="twitter" src="Attachments/img/SocialLogos/twitter-logo.png">
+                </a>
+                <a class="social-logo">
+                    <img alt="youtube" src="Attachments/img/SocialLogos/youtube-logo.png">
+                </a>
+
+            </div>
+            <div class="support">
+                <a class="footer-link">
+                    contact us
+                </a>
+                <a class="footer-link">
+                    FAQ
+                </a>
+                <a class="footer-link">
+                    Report Error
+                </a>
+                <a class="footer-link">
+                    Downloads
+                </a>
+
+            </div>
+            <div class="company">
+
+            </div>
+
+            <div class="info">
+                <a class="footer-link">About WisherMan</a>
+                <a class="footer-link">WisherMan Design</a>
+                <a class="footer-link">Careers</a>
+                <a class="footer-link">Newsroom</a>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

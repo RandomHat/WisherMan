@@ -3,13 +3,11 @@ package com.example.wisherman.controller;
 import com.example.wisherman.model.User;
 import com.example.wisherman.service.UserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
-import java.util.jar.Attributes;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class AccountController {
@@ -29,16 +27,19 @@ public class AccountController {
         requestFromUser.getParameter("lastName"),
         requestFromUser.getParameter("email")
         );
-        userService.saveUser(currentUser);
-        System.out.println(currentUser.toString());
-        //TODO få lavet service til database UserService.addToDB(currentUser);
-        return "redirect:/";
-
+        if(userService.userIsValid(currentUser)) {
+            userService.saveUser(currentUser);
+            System.out.println(currentUser.toString());
+            return"redirect:/";
+        }else{
+            System.out.println("error User not created"); //TODO handle redirect ved forkert bruger input?
+            return "redirect:/";
+        }
     }
 
     @GetMapping("/hp")
     public String test() {
-        return "Template";
+        return "index";
     }
 
     @GetMapping("/login")
@@ -46,8 +47,22 @@ public class AccountController {
         return "login";
     }
     @PostMapping("/login")
-    public String login(){
-        return "Template"; //TODO få lavet flashAttribute / Session attribute
+    public String login(HttpSession session, WebRequest requestFromUser){
+        int id = userService.loginApproved(
+                requestFromUser.getParameter("username"),
+                requestFromUser.getParameter("password"));
+        if(id > 0){
+            session.setAttribute("username", userService.approvedUser(id));
+            return "redirect:/user-panel";
+        } else
+        //(String)session.getAttribute("username");
+        return "login"; //TODO få lavet flashAttribute / Session attribute
+    }
+
+    @GetMapping ("/user-panel")
+    public String login(HttpSession session){
+
+        return "show-user-wishlists";
     }
 }
 

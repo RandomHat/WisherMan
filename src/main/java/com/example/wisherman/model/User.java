@@ -1,6 +1,9 @@
 package com.example.wisherman.model;
 
+import org.apache.logging.log4j.util.Strings;
+
 import java.util.HashMap;
+import java.util.Objects;
 
 public class User {
     private int userID;
@@ -21,7 +24,22 @@ public class User {
         this.email = email;
     }
 
+    public boolean userIsFilled(User user){
+        return user != null
+                && Strings.isNotBlank(user.getUsername())
+                && Strings.isNotBlank(user.getPassword())
+                && Strings.isNotBlank(user.getFirstName())
+                && Strings.isNotBlank(user.getLastName())
+                && Strings.isNotBlank(user.getEmail());
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return username.equals(user.getUsername()) && password.equals(user.getPassword());
+    }
 
     public int getUserID() {
         return userID;

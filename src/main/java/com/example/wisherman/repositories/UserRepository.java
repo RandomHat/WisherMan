@@ -42,6 +42,29 @@ public class UserRepository {
         return listOfUsers;
     }
 
+    public User getUser(int id) {
+        User currentUser = new User();
+        PreparedStatement pstmt = null;
+
+        try {
+            pstmt = conn.prepareStatement("SELECT * FROM sql11448423.users WHERE id = (?)");
+            pstmt.setInt(1, id);
+            ResultSet resultSet = pstmt.executeQuery();
+
+            while (resultSet.next()) {
+                        currentUser.setUserID(resultSet.getInt("id"));
+                        currentUser.setUsername(resultSet.getString("username"));
+                        currentUser.setPassword(resultSet.getString("password"));
+                        currentUser.setFirstName(resultSet.getString("first_name"));
+                        currentUser.setLastName(resultSet.getString("last_name"));
+                        currentUser.setEmail(resultSet.getString("email"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return currentUser;
+    }
+
     public boolean addUserToDB(User user) {
         PreparedStatement pstmt = null;
 

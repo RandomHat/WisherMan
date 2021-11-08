@@ -1,8 +1,6 @@
 package com.example.wisherman.controller;
 
 import com.example.wisherman.model.Wish;
-import com.example.wisherman.model.WishList;
-import com.example.wisherman.repositories.WishListRepository;
 import com.example.wisherman.repositories.WishRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,10 +23,6 @@ public class WishController {
         wishrepository = new WishRepository();
     }
 
-    @GetMapping("/")
-    public String getHome(){
-        return "index";
-    }
 
     @GetMapping("/wishlist/new-wish")
     public String createWishGet(Model model){
