@@ -9,7 +9,6 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
-    private HashMap<String,WishList> wishLists;
 
     public User(){}
 
@@ -69,13 +68,5 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public HashMap<String, WishList> getWishLists() {
-        return wishLists;
-    }
-
-    public void setWishLists(HashMap<String, WishList> wishLists) {
-        this.wishLists = wishLists;
     }
 }
