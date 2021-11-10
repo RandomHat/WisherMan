@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 import java.util.Optional;
 
@@ -32,7 +33,8 @@ public class WishListController {
     }
 
     @GetMapping("/wishlist/show-user-wishlists")
-    public String showUserWishlists(@RequestParam Optional<Integer> id, Model model)   {
+    public String showUserWishlists(HttpSession session, Model model)   {
+
         List<WishList> wishListList = wishlistrepository.getUserWishLists(1);       //insert user id
         model.addAttribute("wishListList", wishListList);
         return "show-user-wishlists";

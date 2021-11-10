@@ -1,7 +1,9 @@
 package com.example.wisherman.controller;
 
+import com.example.wisherman.model.User;
 import com.example.wisherman.model.Wish;
 import com.example.wisherman.repositories.WishRepository;
+import com.example.wisherman.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -18,6 +21,7 @@ import java.util.Optional;
 public class WishController {
 
     private WishRepository wishrepository;
+    private UserService userService;
 
     public WishController() {
         wishrepository = new WishRepository();
@@ -66,8 +70,9 @@ public class WishController {
     }
 
     @GetMapping("/wishlist/show-user-wishes")
-    public String showUserWishes(@RequestParam Optional<Integer> id, Model model) {
-        List<Wish> listOfWishes = wishrepository.getUserWishes(1);          //input userid
+    public String showUserWishes(HttpSession session, Model model) {
+        //((User)session.getAttribute("user")).getUserID()
+        List<Wish> listOfWishes = wishrepository.getUserWishes(userService.getUserSessionID(session));          //input userid
         model.addAttribute("listOfWishes", listOfWishes);
         return "show-user-wishes";
     }

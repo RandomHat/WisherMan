@@ -2,6 +2,8 @@ package com.example.wisherman.service;
 
 import com.example.wisherman.model.User;
 import com.example.wisherman.repositories.UserRepository;
+
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public class UserService {
@@ -42,4 +44,16 @@ public class UserService {
     public User approvedUser(int userID){
         return userRepository.getUser(userID);
         }
+
+    public int getUserSessionID(HttpSession session){
+        int id = ((User)session.getAttribute("user")).getUserID();
+        if (session.isNew()){
+            System.out.println("UserID session not set!! Default to 1");
+            return 1;
+        }
+        return id;
+    }
+
+
 }
+

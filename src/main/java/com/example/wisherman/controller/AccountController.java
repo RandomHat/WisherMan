@@ -52,7 +52,7 @@ public class AccountController {
                 requestFromUser.getParameter("username"),
                 requestFromUser.getParameter("password"));
         if(id > 0){
-            session.setAttribute("username", userService.approvedUser(id));
+            session.setAttribute("user", userService.approvedUser(id));
             return "redirect:/user-panel";
         } else
         //(String)session.getAttribute("username");
