@@ -72,7 +72,7 @@ public class WishController {
     @GetMapping("/wishlist/show-user-wishes")
     public String showUserWishes(HttpSession session, Model model) {
         //((User)session.getAttribute("user")).getUserID()
-        List<Wish> listOfWishes = wishrepository.getUserWishes(userService.getUserSessionID(session));          //input userid
+        List<Wish> listOfWishes = wishrepository.getUserWishes(userService.getUserSessionID(session));
         model.addAttribute("listOfWishes", listOfWishes);
         return "show-user-wishes";
     }

@@ -37,15 +37,11 @@ public class AccountController {
         }
     }
 
-    @GetMapping("/hp")
-    public String test() {
-        return "index";
-    }
-
     @GetMapping("/login")
     public String showLoginForm(){
         return "login";
     }
+
     @PostMapping("/login")
     public String login(HttpSession session, WebRequest requestFromUser){
         int id = userService.loginApproved(
