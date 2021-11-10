@@ -29,7 +29,6 @@ public class AccountController {
         );
         if(userService.userIsValid(currentUser)) {
             userService.saveUser(currentUser);
-            System.out.println(currentUser.toString());
             return"redirect:/";
         }else{
             System.out.println("error User not created"); //TODO handle redirect ved forkert bruger input?

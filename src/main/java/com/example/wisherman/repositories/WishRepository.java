@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class WishRepository {
@@ -21,7 +20,7 @@ public class WishRepository {
 
     public List<Wish> getAllWishes() {
         listOfWishes = new ArrayList<>();
-        PreparedStatement pstmt = null;
+        PreparedStatement pstmt;
 
         try {
             pstmt = conn.prepareStatement("SELECT * FROM sql11448423.wishes");
@@ -47,7 +46,7 @@ public class WishRepository {
     public List<Wish> getUserWishes(int id) {
 
         listOfWishes = new ArrayList<>();
-        PreparedStatement pstmt = null;
+        PreparedStatement pstmt;
 
         try {
             pstmt = conn.prepareStatement("SELECT * FROM wishes WHERE wishlist_id IN (SELECT idwishlists FROM wishlists where user_id = (?))");
@@ -73,7 +72,7 @@ public class WishRepository {
 
     public List<Wish> getWishListWishes(int listId){
         listOfWishes = new ArrayList<>();
-        PreparedStatement pstmt = null;
+        PreparedStatement pstmt;
 
         try {
             pstmt = conn.prepareStatement("SELECT * FROM wishes WHERE wishlist_id = (?)");
@@ -89,7 +88,7 @@ public class WishRepository {
     }
 
     public boolean addWishToWishList(Wish wish) {
-        PreparedStatement pstmt = null;
+        PreparedStatement pstmt;
 
         try {
             pstmt = conn.prepareStatement("INSERT INTO wishes (title, link, price, reserved, wishlist_id) VALUES (?, ?, ?, ?, ?)");

@@ -17,7 +17,7 @@ import java.util.Optional;
 @Controller
 public class WishController {
 
-    private WishRepository wishrepository;
+    private final WishRepository wishrepository;
 
     public WishController() {
         wishrepository = new WishRepository();
@@ -37,10 +37,13 @@ public class WishController {
         System.out.print(wish);
         System.out.println(wish.isValidWish(wish));
         if (wish.isValidWish(wish)) {
-            wishrepository.addWishToWishList(wish);  // adding wish to database
-            redirectAttributes.addFlashAttribute("wish", wish);
-            System.out.println("inside true. " + "Added wish: " + wish.toString()); //debugging. print added wish
-            return new RedirectView("/wishlist/new-wish-success", true);
+            if (wishrepository.addWishToWishList(wish)) {  // adding wish to database
+                redirectAttributes.addFlashAttribute("wish", wish);
+                System.out.println("inside true. " + "Added wish: " + wish); //debugging. print added wish
+                return new RedirectView("/wishlist/new-wish-success", true);
+            } else {
+                return new RedirectView("/wishlist/new-wish", true);
+            }
         } else {
             return new RedirectView("/wishlist/new-wish", true);
         }

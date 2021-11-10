@@ -11,6 +11,6 @@ public class WishService {
 
     public List<Wish> getWishListWishes(HttpSession session){
         int wishListID = (int) session.getAttribute("wishListID");
-        return wishes.getWishListWishes(session);
+        return wishes.getWishListWishes(wishListID);
     }
 }

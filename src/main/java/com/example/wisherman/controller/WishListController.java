@@ -18,7 +18,7 @@ import java.util.Optional;
 @Controller
 public class WishListController {
 
-    private WishListRepository wishlistrepository;
+    private final WishListRepository wishlistrepository;
 
     public WishListController() {
         wishlistrepository = new WishListRepository();
