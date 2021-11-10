@@ -1,10 +1,8 @@
 package com.example.wisherman.repositories;
 
 import com.example.wisherman.model.Wish;
-import com.example.wisherman.model.WishList;
 import com.example.wisherman.utlility.DBConnection;
 import org.springframework.stereotype.Repository;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

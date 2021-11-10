@@ -2,6 +2,7 @@ package com.example.wisherman.controller;
 
 import com.example.wisherman.model.WishList;
 import com.example.wisherman.repositories.WishListRepository;
+import com.example.wisherman.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,13 +13,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 import java.util.Optional;
 
 @Controller
 public class WishListController {
 
-    private final WishListRepository wishlistrepository;
+    private WishListRepository wishlistrepository;
+    private UserService userService;
 
     public WishListController() {
         wishlistrepository = new WishListRepository();
@@ -31,10 +34,11 @@ public class WishListController {
         return "show-all-wishlists";
     }
 
-    @GetMapping("/wishlist/show-user-wishlists")
-    public String showUserWishlists(@RequestParam Optional<Integer> id, Model model)   {
-        List<WishList> wishListList = wishlistrepository.getUserWishLists(1);       //insert user id
+    @GetMapping("/wishlist/show-user-wishlists") //TODO Userpanel -
+    public String showUserWishlists(HttpSession session, Model model, Model modelWL)   {
+        List<WishList> wishListList = wishlistrepository.getUserWishLists(userService.getUserSessionID(session));
         model.addAttribute("wishListList", wishListList);
+        modelWL.addAttribute("wishlist", new WishList());
         return "show-user-wishlists";
     }
 
@@ -49,7 +53,7 @@ public class WishListController {
         return "new-wishlist";
     }
 
-    @PostMapping("/wishlist/new-wishlist")
+    @PostMapping("/wishlist/new-wishlist") // en form på show-user-wishlists.html
     public RedirectView newWishListPost(
             @ModelAttribute WishList wishList,
             RedirectAttributes redirectAttributes){

@@ -36,22 +36,18 @@ public class AccountController {
         }
     }
 
-    @GetMapping("/hp")
-    public String test() {
-        return "index";
-    }
-
     @GetMapping("/login")
     public String showLoginForm(){
         return "login";
     }
+
     @PostMapping("/login")
     public String login(HttpSession session, WebRequest requestFromUser){
         int id = userService.loginApproved(
                 requestFromUser.getParameter("username"),
                 requestFromUser.getParameter("password"));
         if(id > 0){
-            session.setAttribute("username", userService.approvedUser(id));
+            session.setAttribute("user", userService.approvedUser(id));
             return "redirect:/user-panel";
         } else
             //(String)session.getAttribute("username");

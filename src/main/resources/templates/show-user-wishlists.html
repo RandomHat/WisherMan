@@ -28,6 +28,12 @@
             <td th:text="${wishlist.getUserid}"></td>
         </tr>
     </table>
+    <h1> Make a new Wishlist</h1>
+    <form action="#" th:action="@{/wishlist/show-user-wishlists}" method="post" th:object="${wishlist}">
+        <label for="wishlist-title">Title</label>
+        <input id="wishlist-title" name="wishlist" type="text" th:field="${wishlist.listName}"><br><br>
+        <button type="submit">Create</button>
+    </form>
 </div>
 </body>
 </html>
