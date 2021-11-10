@@ -1,5 +1,6 @@
 package com.example.wisherman.controller;
 
+import com.example.wisherman.model.User;
 import com.example.wisherman.model.WishList;
 import com.example.wisherman.repositories.WishListRepository;
 import com.example.wisherman.service.UserService;
@@ -21,7 +22,7 @@ import java.util.Optional;
 public class WishListController {
 
     private WishListRepository wishlistrepository;
-    private UserService userService;
+    private UserService userService = new UserService();
 
     public WishListController() {
         wishlistrepository = new WishListRepository();
@@ -36,6 +37,8 @@ public class WishListController {
 
     @GetMapping("/wishlist/show-user-wishlists") //TODO Userpanel -
     public String showUserWishlists(HttpSession session, Model model, Model modelWL)   {
+        //List<WishList> wishListList = wishlistrepository.getUserWishLists(((User)session.getAttribute("user")).getUserID());
+
         List<WishList> wishListList = wishlistrepository.getUserWishLists(userService.getUserSessionID(session));
         model.addAttribute("wishListList", wishListList);
         modelWL.addAttribute("wishlist", new WishList());

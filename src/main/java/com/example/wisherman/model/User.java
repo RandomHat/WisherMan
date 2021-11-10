@@ -41,6 +41,19 @@ public class User {
         return username.equals(user.getUsername()) && password.equals(user.getPassword());
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "userID=" + userID +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", wishLists=" + wishLists +
+                '}';
+    }
+
     public int getUserID() {
         return userID;
     }

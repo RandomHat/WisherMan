@@ -49,7 +49,10 @@ public class AccountController {
                 requestFromUser.getParameter("password"));
         if(id > 0){
             session.setAttribute("user", userService.approvedUser(id));
-            return "redirect:/user-panel";
+
+            System.out.println(((User)session.getAttribute("user")).toString());
+            return "redirect:/wishlist/show-user-wishlists";
+            //return "redirect:/user-panel";
         } else
         //(String)session.getAttribute("username");
         return "login"; //TODO få lavet flashAttribute / Session attribute
@@ -58,7 +61,7 @@ public class AccountController {
     @GetMapping ("/user-panel")
     public String login(HttpSession session){
 
-        return "show-user-wishlists";
+        return "redirect:/wishlist/show-user-wishlists";
     }
 }
 

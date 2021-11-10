@@ -32,6 +32,11 @@ public class UserService {
     }
 
     public int loginApproved(String username, String password){
+        return userRepository.getUserIdLogin(username, password);
+    }
+
+    /*
+    public int loginApproved(String username, String password){
         List<User> userList = userRepository.getAllUsers();
         for(User user : userList){
             if(user.getUsername().equals(username) && user.getPassword().equals(password)) {
@@ -40,18 +45,22 @@ public class UserService {
         }
         return -1;
     }
+    */
 
     public User approvedUser(int userID){
         return userRepository.getUser(userID);
         }
 
     public int getUserSessionID(HttpSession session){
-        int id = ((User)session.getAttribute("user")).getUserID();
-        if (session.isNew()){
-            System.out.println("UserID session not set!! Default to 1");
-            return 1;
+        if (session.getAttribute("user") == null || session.isNew()) {
+
+            System.out.println("SESSION NOT SET. NULL!! Default to 1");
+
+            session.setAttribute("user", userRepository.getUser(2));
+
+            return 2;
         }
-        return id;
+        return ((User)session.getAttribute("user")).getUserID();
     }
 
 

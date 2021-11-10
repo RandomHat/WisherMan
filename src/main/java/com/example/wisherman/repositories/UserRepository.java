@@ -63,6 +63,32 @@ public class UserRepository {
         return currentUser;
     }
 
+    public int getUserIdLogin(String username, String password) {
+
+        PreparedStatement pstmt = null;
+        int a = 2;
+
+        try {
+            pstmt = conn.prepareStatement("SELECT users.id FROM users WHERE username = ? AND users.password = ?");
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
+            ResultSet resultSet = pstmt.executeQuery();
+
+
+            while (resultSet.next()) {
+                System.out.println(resultSet.getInt("id"));
+                a = resultSet.getInt("id");
+            }
+
+
+            return a;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return a;
+    }
+
     public boolean addUserToDB(User user) {
         PreparedStatement pstmt = null;
 
