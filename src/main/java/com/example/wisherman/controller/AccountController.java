@@ -29,7 +29,6 @@ public class AccountController {
         );
         if(userService.userIsValid(currentUser)) {
             userService.saveUser(currentUser);
-            System.out.println(currentUser.toString());
             return"redirect:/";
         }else{
             System.out.println("error User not created"); //TODO handle redirect ved forkert bruger input?
@@ -54,8 +53,7 @@ public class AccountController {
             return "redirect:/wishlist/show-user-wishlists";
             //return "redirect:/user-panel";
         } else
-        //(String)session.getAttribute("username");
-        return "login"; //TODO få lavet flashAttribute / Session attribute
+            return "login";
     }
 
     @GetMapping ("/user-panel")

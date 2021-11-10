@@ -16,7 +16,7 @@ public class WishList {
         this.userid = userid;
     }
 
-    public WishList(){};
+    public WishList(){}
 
     public void addWish(Wish wishToAdd){
         wishes.add(wishToAdd);

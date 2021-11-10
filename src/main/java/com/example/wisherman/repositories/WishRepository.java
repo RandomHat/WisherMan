@@ -1,17 +1,14 @@
 package com.example.wisherman.repositories;
 
 import com.example.wisherman.model.Wish;
-import com.example.wisherman.model.WishList;
 import com.example.wisherman.utlility.DBConnection;
 import org.springframework.stereotype.Repository;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class WishRepository {
@@ -21,7 +18,7 @@ public class WishRepository {
 
     public List<Wish> getAllWishes() {
         listOfWishes = new ArrayList<>();
-        PreparedStatement pstmt = null;
+        PreparedStatement pstmt;
 
         try {
             pstmt = conn.prepareStatement("SELECT * FROM sql11448423.wishes");
@@ -47,7 +44,7 @@ public class WishRepository {
     public List<Wish> getUserWishes(int id) {
 
         listOfWishes = new ArrayList<>();
-        PreparedStatement pstmt = null;
+        PreparedStatement pstmt;
 
         try {
             pstmt = conn.prepareStatement("SELECT * FROM wishes WHERE wishlist_id IN (SELECT idwishlists FROM wishlists where user_id = (?))");
@@ -71,8 +68,25 @@ public class WishRepository {
         return listOfWishes;
     }
 
+    public List<Wish> getWishListWishes(int listId){
+        listOfWishes = new ArrayList<>();
+        PreparedStatement pstmt;
+
+        try {
+            pstmt = conn.prepareStatement("SELECT * FROM wishes WHERE wishlist_id = (?)");
+            pstmt.setInt(1,listId);
+
+            ResultSet resultSet = pstmt.executeQuery();
+            listOfWishes = unpackQuery(resultSet);
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+
+        return listOfWishes;
+    }
+
     public boolean addWishToWishList(Wish wish) {
-        PreparedStatement pstmt = null;
+        PreparedStatement pstmt;
 
         try {
             pstmt = conn.prepareStatement("INSERT INTO wishes (title, link, price, reserved, wishlist_id) VALUES (?, ?, ?, ?, ?)");
@@ -91,5 +105,21 @@ public class WishRepository {
         }
     }
 
+    private List<Wish> unpackQuery(ResultSet resultSet) throws SQLException {
+        listOfWishes = new ArrayList<>();
+
+        while (resultSet.next()) {
+
+            Wish wish = new Wish(
+                    resultSet.getInt("idwishes"),
+                    resultSet.getString("title"),
+                    resultSet.getString("link"),
+                    resultSet.getString("price"),
+                    resultSet.getBoolean("reserved"),
+                    resultSet.getInt("wishlist_id"));
+            listOfWishes.add(wish);
+        }
+        return listOfWishes;
+    }
 
 }
