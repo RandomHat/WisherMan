@@ -1,5 +1,6 @@
 package com.example.wisherman.controller;
 
+import com.example.wisherman.model.User;
 import com.example.wisherman.model.WishList;
 import com.example.wisherman.repositories.WishListRepository;
 import com.example.wisherman.service.UserService;
@@ -36,7 +37,9 @@ public class WishListController {
     @GetMapping("/user-panel") //TODO Userpanel -
     public String showUserWishlists(HttpSession session, Model model, Model modelWL)   {
         //List<WishList> wishListList = wishlistrepository.getUserWishLists(((User)session.getAttribute("user")).getUserID());
-
+        if(userService.getUserSessionID(session) < 0){
+            return "redirect:/";
+        }
         List<WishList> wishListList = wishlistrepository.getUserWishLists(userService.getUserSessionID(session));
         model.addAttribute("wishListList", wishListList);
         modelWL.addAttribute("wishlist", new WishList());
@@ -60,10 +63,13 @@ public class WishListController {
     @PostMapping("/user-panel/new-wishlist") // en form på show-user-wishlists.html
     public RedirectView newWishListPost(
             @ModelAttribute WishList wishList,
-            RedirectAttributes redirectAttributes){
+            RedirectAttributes redirectAttributes,
+            HttpSession session){
         System.out.println(wishList);
         if (wishList.isValidWishList(wishList)){
             redirectAttributes.addFlashAttribute("wishlist",wishList);
+            wishList.setUserid(((User)session.getAttribute("user")).getUserID());
+            wishListService.addWishListToDB(wishList);
             return new RedirectView("/user-panel/new-wishlist-success", true);
         } else {
             return new RedirectView("/user-panel", true);

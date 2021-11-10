@@ -21,5 +21,8 @@ public class WishListService {
         return wishLists.getWishList(listId);
     }
 
+    public boolean addWishListToDB(WishList wishList){
+        return wishLists.addWishListToDB(wishList);
+    }
 
 }

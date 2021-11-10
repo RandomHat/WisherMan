@@ -22,8 +22,9 @@
         <th>Wishlist Owner ID</th>
     </tr>
     <tr th:each="wishlist : ${wishListList}">
+        <!--/*@thymesVar id="wishlist" type="com.example.wisherman.model.WishList"*/-->
         <td th:text="${wishlist.getIdwishlist}"></td>
-       <td> <a th:href="'/user/wishlist?listID=' + ${wishlist.getIdwishlist}"  th:text="${wishlist.getListName}"></a></td>
+       <td> <a th:href="'/user/wishlist?listId=' + ${wishlist.getIdwishlist}"  th:text="${wishlist.getListName}"></a></td>
         <td th:text="${wishlist.getUserid}"></td>
     </tr>
 </table>

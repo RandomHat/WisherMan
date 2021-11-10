@@ -30,7 +30,14 @@
             </td>
         </tr>
     </table>
-    <a href="/user-panel/new-wishlist"> <h1>Create new wishlist</h1> </a>
+    <br>
+    <h1>Create new wishlist</h1>
+    <form action="#" th:action="@{/user-panel/new-wishlist}" method="post" th:object="${wishlist}">
+        <label for="wishlist-title">Title</label>
+        <input id="wishlist-title" name="wishlist" type="text" th:field="${wishlist.listName}"><br><br>
+
+        <button type="submit">Create</button>
+    </form>
 </div>
 </body>
 </html>

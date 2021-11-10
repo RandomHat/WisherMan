@@ -25,6 +25,7 @@
         <th>Wishlist ID</th>
     </tr>
     <tr th:each="wish : ${wishlistWishes}">
+        <!--/*@thymesVar id="wish" type="com.example.wisherman.model.Wish"*/-->
         <td th:text="${wish.getId}"></td>
         <td th:text="${wish.getTitle}"></td>
         <td th:text="${wish.getUrl}"></td>

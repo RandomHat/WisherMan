@@ -56,9 +56,9 @@ public class UserService {
 
             System.out.println("SESSION NOT SET. NULL!! Default to 1");
 
-            session.setAttribute("user", userRepository.getUser(2));
+            //session.setAttribute("user", userRepository.getUser(2));
 
-            return 2;
+            return -1;
         }
         return ((User)session.getAttribute("user")).getUserID();
     }
