@@ -82,4 +82,16 @@ public class WishListController {
              return "new-wishlist";
          }
      }
+
+    @GetMapping("/wishlist/share-wishlists")
+    public String shareWishlists(@RequestParam (defaultValue = "0") String user, Model model) {
+        int userId = Integer.parseInt(user);
+        if (userId == 0) {
+            return "redirect:/wishlist/show-all-wishlists";
+        } else {
+            List<WishList> wishListList = wishlistrepository.getUserWishLists(userId); // ændres til service
+            model.addAttribute("wishListList", wishListList);
+            return "share-user-wishlists";
+        }
+    }
 }

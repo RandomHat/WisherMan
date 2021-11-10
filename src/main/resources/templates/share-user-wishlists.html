@@ -23,7 +23,7 @@
     </tr>
     <tr th:each="wishlist : ${wishListList}">
         <td th:text="${wishlist.getIdwishlist}"></td>
-        <td th:text="${wishlist.getListName}"></td>
+       <td> <a th:href="'/wishlist/share-wishlist?wishlist=' + ${wishlist.getIdwishlist}"  th:text="${wishlist.getListName}"></a></td>
         <td th:text="${wishlist.getUserid}"></td>
     </tr>
 </table>
