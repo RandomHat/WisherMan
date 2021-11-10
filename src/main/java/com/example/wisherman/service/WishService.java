@@ -1,6 +1,7 @@
 package com.example.wisherman.service;
 
 import com.example.wisherman.model.Wish;
+import com.example.wisherman.model.WishList;
 import com.example.wisherman.repositories.WishRepository;
 
 import javax.servlet.http.HttpSession;
@@ -10,8 +11,8 @@ public class WishService {
     WishRepository wishes = new WishRepository();
 
     public List<Wish> getWishListWishes(HttpSession session){
-        int wishListID = (int) session.getAttribute("wishListID");
-        return wishes.getWishListWishes(wishListID);
+        WishList wishList = (WishList) session.getAttribute("wishlist");
+        return wishes.getWishListWishes(wishList.getIdwishlist());
     }
 
     public List<Wish> getWishListWishes(int listID){

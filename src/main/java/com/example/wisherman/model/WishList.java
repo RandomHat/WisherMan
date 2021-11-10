@@ -62,4 +62,15 @@ public class WishList {
     public void setUserid(int userid) {
         this.userid = userid;
     }
+
+    @Override
+    public String toString() {
+        return "WishList{" +
+                "idwishlist=" + idwishlist +
+                ", listName='" + listName + '\'' +
+                ", userid=" + userid +
+                ", wishes=" + wishes +
+                '}';
+    }
 }
+

@@ -2,8 +2,11 @@ package com.example.wisherman.controller;
 
 import com.example.wisherman.model.User;
 import com.example.wisherman.model.Wish;
+import com.example.wisherman.model.WishList;
 import com.example.wisherman.repositories.WishRepository;
 import com.example.wisherman.service.UserService;
+import com.example.wisherman.service.WishListService;
+import com.example.wisherman.service.WishService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,53 +18,65 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @Controller
 public class WishController {
 
-    private WishRepository wishrepository;
-    private UserService userService;
+    private WishRepository wishrepository = new WishRepository();
+    private WishService wishService = new WishService();
+    private WishListService wishListService = new WishListService();
+    private UserService userService = new UserService();
 
     public WishController() {
-        wishrepository = new WishRepository();
     }
 
 
-    @GetMapping("/wishlist/new-wish")
-    public String createWishGet(Model model){
-        model.addAttribute("wish", new Wish());
-        return "new-wish";
+    @GetMapping("/user-panel/wishlist")
+    public String createWishGet(HttpSession session, Model model, @RequestParam int listId) {
+
+        WishList wishlist = wishListService.getWishList(listId);
+
+        wishListService.getWishList(listId);
+
+        if ( wishlist.getUserid() == userService.getUserSessionID(session)) {
+            model.addAttribute("wish", new Wish());
+            //int listID = Integer.parseInt(listId);
+            List<Wish> listOfWishes = wishService.getWishListWishes(listId);
+            //wishrepository.getUserWishes(userService.getUserSessionID(session));
+            model.addAttribute("listOfWishes", listOfWishes);
+            return "Account/show-user-wishes";
+        } else{
+
+        return "redirect:/";}
     }
 
-    @PostMapping("/wishlist/new-wish")
+
+    @PostMapping("/user-panel/wishlist")
     public RedirectView createWishPost(
             @ModelAttribute("wish") Wish wish,
             RedirectAttributes redirectAttributes) {
         System.out.print(wish);
         System.out.println(wish.isValidWish(wish));
         if (wish.isValidWish(wish)) {
-            if (wishrepository.addWishToWishList(wish)) {  // adding wish to database
+            wishrepository.addWishToWishList(wish); // adding wish to database
                 redirectAttributes.addFlashAttribute("wish", wish);
                 System.out.println("inside true. " + "Added wish: " + wish); //debugging. print added wish
-                return new RedirectView("/wishlist/new-wish-success", true);
-            } else {
-                return new RedirectView("/wishlist/new-wish", true);
-            }
+                return new RedirectView("/user-panel/new-wish-success", true);
+
         } else {
-            return new RedirectView("/wishlist/new-wish", true);
+            return new RedirectView("/user-panel/wishlist", true);
         }
     }
 
-    @GetMapping("/wishlist/new-wish-success")
+    @GetMapping("/user-panel/new-wish-success") // return til user-panel/wishlist i HTML.
     public String createWishSuccess(HttpServletRequest request, Model model)   {
         Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
         if (inputFlashMap != null) {
             Wish wish = (Wish) inputFlashMap.get("wish");
             model.addAttribute("wish", wish);
-            return "new-wish-success";
+            return "Account/new-wish-success";
         } else {
-            return "new-wish";
+            return "Account/show-user-wishes";
         }
     }
 
@@ -72,6 +87,19 @@ public class WishController {
         return "show-all-wishes";
     }
 
+    @GetMapping("/user/wishlist")
+    public String shareWishlist(@RequestParam (defaultValue = "0") String listId, Model model ){
+        int wishlistId = Integer.parseInt(listId);
+
+        if (wishlistId <= 0){
+            return "redirect:/wishlist/show-all-wishlists";
+        } else{
+            List<Wish> wishList = wishService.getWishListWishes(wishlistId);
+            model.addAttribute("wishlistWishes",wishList);
+            return "Shareables/share-wishlist-wishes";
+        }
+    }
+/*
     @GetMapping("/wishlist/show-user-wishes")
     public String showUserWishes(HttpSession session, Model model) {
         //((User)session.getAttribute("user")).getUserID()
@@ -79,6 +107,8 @@ public class WishController {
         model.addAttribute("listOfWishes", listOfWishes);
         return "show-user-wishes";
     }
+
+ */
 
 
 

@@ -15,9 +15,12 @@ import java.util.List;
 
 @Controller
 public class MainController {
+    private WishListRepository wishListRepository = new WishListRepository();
+    private WishService wishService = new WishService();
 
     @GetMapping("/")
     public String getHome() {
         return "index";
     }
+
 }

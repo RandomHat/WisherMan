@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Show Wishlists</title>
+    <title>Show User Wishlists</title>
     <style>
         table, th, td {
             border: 1px solid black;
@@ -15,7 +15,7 @@
 </head>
 <body>
 <div>
-    <h1>Wishlists</h1>
+    <h1>User Wishlists</h1>
     <table class="wishlist">
         <tr>
             <th>Wishlist ID</th>
@@ -24,10 +24,13 @@
         </tr>
         <tr th:each="wishlist : ${wishListList}">
             <td th:text="${wishlist.getIdwishlist}"></td>
-            <td th:text="${wishlist.getListName}"></td>
+            <td> <a th:href="'/user-panel/wishlist?listId=' + ${wishlist.getIdwishlist()}" th:text="${wishlist.getListName}"></a></td>
             <td th:text="${wishlist.getUserid}"></td>
+            <td>
+            </td>
         </tr>
     </table>
+    <a href="/user-panel/new-wishlist"> <h1>Create new wishlist</h1> </a>
 </div>
 </body>
 </html>

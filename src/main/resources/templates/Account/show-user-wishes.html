@@ -30,10 +30,28 @@
             <td th:text="${wish.getTitle}"></td>
             <td th:text="${wish.getUrl}"></td>
             <td th:text="${wish.getPrice}"></td>
-            <td th:text="${wish.isReserved}"></td>
+            <td th:text="${wish.isReservedBool}"></td>
             <td th:text="${wish.getWishListID}"></td>
         </tr>
     </table>
+    <h1>Creating new wish, enter details below: </h1>
+
+    <form action="#" th:action="@{/user-panel/wishlist}" method="post" th:object="${wish}">
+        <label for="wish_title">Title</label>
+        <input id="wish_title" name="wish" type="text" th:field="*{title}"><br><br>
+
+        <label for="wish_price">Price</label>
+        <input id="wish_price" name="wish" type="text" th:field="*{price}"><br><br>
+
+        <label for="wish_url">Link</label>
+        <input id="wish_url" name="wish" type="text" th:field="*{url}"><br><br>
+
+        <label for="wish_url">Wishlist ID</label>
+        <input id="wish_wishlist" name="wish" type="text" th:field="*{wishListID}"><br><br>
+
+        <button type="submit">Wish!</button>
+
+    </form>
 </div>
 </body>
 </html>

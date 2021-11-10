@@ -47,7 +47,7 @@ public class WishListRepository {
         PreparedStatement pstmt = null;
 
         try {
-            pstmt = conn.prepareStatement("SELECT * FROM wishlists WHERE user_id = (?)");
+            pstmt = conn.prepareStatement("SELECT * FROM sql11448423.wishlists WHERE user_id = (?)");
             pstmt.setInt(1, id);
             ResultSet resultSet = pstmt.executeQuery();
 
@@ -64,6 +64,25 @@ public class WishListRepository {
             System.out.println(e.getMessage());
         }
         return wishListList;
+    }
+
+    public WishList getWishList(int id) {
+        WishList wishList = new WishList();
+        PreparedStatement pstmt = null;
+
+        try {
+            pstmt = conn.prepareStatement("SELECT * FROM sql11448423.wishlists WHERE idwishlists = (?)");
+            pstmt.setInt(1, id);
+            ResultSet resultSet = pstmt.executeQuery();
+            while (resultSet.next()) {
+                wishList.setIdwishlist(resultSet.getInt("idwishlists"));
+                wishList.setListName(resultSet.getString("list_name"));
+                wishList.setUserid(resultSet.getInt("user_id"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return wishList;
     }
 
 }

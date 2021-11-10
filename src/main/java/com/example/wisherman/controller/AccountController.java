@@ -15,7 +15,7 @@ public class AccountController {
 
     @GetMapping("/new-account")
     public String newAccountView() {
-        return "new-account";
+        return "Account/new-account";
     }
 
     @PostMapping("/new-account")
@@ -38,7 +38,7 @@ public class AccountController {
 
     @GetMapping("/login")
     public String showLoginForm(){
-        return "login";
+        return "Account/login";
     }
 
     @PostMapping("/login")
@@ -50,16 +50,10 @@ public class AccountController {
             session.setAttribute("user", userService.approvedUser(id));
 
             System.out.println(((User)session.getAttribute("user")).toString());
-            return "redirect:/wishlist/show-user-wishlists";
+            return "redirect:/user-panel";
             //return "redirect:/user-panel";
         } else
-            return "login";
-    }
-
-    @GetMapping ("/user-panel")
-    public String login(HttpSession session){
-
-        return "redirect:/wishlist/show-user-wishlists";
+            return "Account/login";
     }
 }
 
