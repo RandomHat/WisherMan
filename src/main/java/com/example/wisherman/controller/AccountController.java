@@ -55,8 +55,8 @@ public class AccountController {
             session.setAttribute("username", userService.approvedUser(id));
             return "redirect:/user-panel";
         } else
-        //(String)session.getAttribute("username");
-        return "login"; //TODO få lavet flashAttribute / Session attribute
+            //(String)session.getAttribute("username");
+            return "login"; //TODO få lavet flashAttribute / Session attribute
     }
 
     @GetMapping ("/user-panel")

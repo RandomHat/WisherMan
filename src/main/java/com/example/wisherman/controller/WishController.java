@@ -67,7 +67,11 @@ public class WishController {
 
     @GetMapping("/wishlist/show-user-wishes")
     public String showUserWishes(@RequestParam Optional<Integer> id, Model model) {
-        List<Wish> listOfWishes = wishrepository.getUserWishes(1);          //input userid
+        int listID = 1;
+        if (id.isPresent()){
+            listID = id.get();
+        }
+        List<Wish> listOfWishes = wishrepository.getUserWishes(listID);          //input userid
         model.addAttribute("listOfWishes", listOfWishes);
         return "show-user-wishes";
     }

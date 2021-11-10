@@ -71,6 +71,23 @@ public class WishRepository {
         return listOfWishes;
     }
 
+    public List<Wish> getWishListWishes(int listId){
+        listOfWishes = new ArrayList<>();
+        PreparedStatement pstmt = null;
+
+        try {
+            pstmt = conn.prepareStatement("SELECT * FROM wishes WHERE wishlist_id = (?)");
+            pstmt.setInt(1,listId);
+
+            ResultSet resultSet = pstmt.executeQuery();
+            listOfWishes = unpackQuery(resultSet);
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+
+        return listOfWishes;
+    }
+
     public boolean addWishToWishList(Wish wish) {
         PreparedStatement pstmt = null;
 
@@ -91,5 +108,21 @@ public class WishRepository {
         }
     }
 
+    private List<Wish> unpackQuery(ResultSet resultSet) throws SQLException {
+        listOfWishes = new ArrayList<>();
+
+        while (resultSet.next()) {
+
+            Wish wish = new Wish(
+                    resultSet.getInt("idwishes"),
+                    resultSet.getString("title"),
+                    resultSet.getString("link"),
+                    resultSet.getString("price"),
+                    resultSet.getBoolean("reserved"),
+                    resultSet.getInt("wishlist_id"));
+            listOfWishes.add(wish);
+        }
+        return listOfWishes;
+    }
 
 }
