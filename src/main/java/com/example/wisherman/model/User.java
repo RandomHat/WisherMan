@@ -48,9 +48,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", wishLists=" + wishLists +
-                '}';
+                ", email='" + email;
     }
 
     public int getUserID() {
