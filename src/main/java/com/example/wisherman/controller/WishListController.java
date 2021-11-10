@@ -20,7 +20,7 @@ import java.util.Optional;
 @Controller
 public class WishListController {
 
-    private WishListRepository wishlistrepository;
+    private final WishListRepository wishlistrepository;
     private UserService userService;
 
     public WishListController() {
