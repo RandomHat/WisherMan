@@ -31,10 +31,11 @@ public class WishListController {
         return "show-all-wishlists";
     }
 
-    @GetMapping("/wishlist/show-user-wishlists")
-    public String showUserWishlists(@RequestParam Optional<Integer> id, Model model)   {
+    @GetMapping("/wishlist/show-user-wishlists") //TODO Userpanel -
+    public String showUserWishlists(@RequestParam Optional<Integer> id, Model model, Model modelWL)   {
         List<WishList> wishListList = wishlistrepository.getUserWishLists(1);       //insert user id
         model.addAttribute("wishListList", wishListList);
+        modelWL.addAttribute("wishlist", new WishList());
         return "show-user-wishlists";
     }
 
@@ -49,7 +50,7 @@ public class WishListController {
         return "new-wishlist";
     }
 
-    @PostMapping("/wishlist/new-wishlist")
+    @PostMapping("/wishlist/new-wishlist") // en form på show-user-wishlists.html
     public RedirectView newWishListPost(
             @ModelAttribute WishList wishList,
             RedirectAttributes redirectAttributes){
