@@ -88,7 +88,7 @@ public class WishController {
         return "show-all-wishes";
     }
 
-    
+
     @GetMapping("/user/wishlist")
     public String shareWishlist(@RequestParam (defaultValue = "0") String listId, Model model ){
         int wishlistId = Integer.parseInt(listId);

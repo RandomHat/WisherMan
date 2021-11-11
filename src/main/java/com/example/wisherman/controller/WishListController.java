@@ -34,13 +34,14 @@ public class WishListController {
         return "Shareables/show-all-wishlists";
     }
 
-    @GetMapping("/user-panel") //TODO Userpanel -
+    @GetMapping("/user-panel")
     public String showUserWishlists(HttpSession session, Model model, Model modelWL)   {
         //List<WishList> wishListList = wishlistrepository.getUserWishLists(((User)session.getAttribute("user")).getUserID());
         if(userService.getUserSessionID(session) < 0){
             return "redirect:/";
         }
         List<WishList> wishListList = wishlistrepository.getUserWishLists(userService.getUserSessionID(session));
+        model.addAttribute("userID", userService.getUserSessionID(session));
         model.addAttribute("wishListList", wishListList);
         modelWL.addAttribute("wishlist", new WishList());
         return "Account/show-user-wishlists";
