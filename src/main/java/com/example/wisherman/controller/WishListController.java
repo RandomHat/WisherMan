@@ -22,14 +22,13 @@ import java.util.Map;
 public class WishListController {
 
 
-    private WishListRepository wishlistrepository = new WishListRepository();
     private UserService userService = new UserService();
     private WishListService wishListService = new WishListService();
 
 
     @GetMapping("/show-all-wishlists")
     public String showAllWishlists(Model model)   {
-        List<WishList> wishListList = wishlistrepository.getAllWishLists(); // Wishlist service
+        List<WishList> wishListList = wishListService.getAllWishlists();
         model.addAttribute("wishListList", wishListList);
         return "Shareables/show-all-wishlists";
     }
@@ -40,7 +39,9 @@ public class WishListController {
         if(userService.getUserSessionID(session) < 0){
             return "redirect:/";
         }
-        List<WishList> wishListList = wishlistrepository.getUserWishLists(userService.getUserSessionID(session));
+        List<WishList> wishListList = wishListService.getUserSessionWishLists(session);
+        System.out.println(wishListList.toString());
+        //List<WishList> wishListList = wishlistrepository.getUserWishLists(userService.getUserSessionID(session));
         model.addAttribute("userID", userService.getUserSessionID(session));
         model.addAttribute("wishListList", wishListList);
         modelWL.addAttribute("wishlist", new WishList());
@@ -95,7 +96,7 @@ public class WishListController {
         if (userId == 0) {
             return "redirect:/show-all-wishlists";
         } else {
-            List<WishList> wishListList = wishlistrepository.getUserWishLists(userId); // ændres til service
+            List<WishList> wishListList = wishListService.getUserIdWishLists(userId);
             model.addAttribute("wishListList", wishListList);
             return "Shareables/share-user-wishlists";
         }
