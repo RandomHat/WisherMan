@@ -1,6 +1,5 @@
 package com.example.wisherman.controller;
 
-import com.example.wisherman.model.User;
 import com.example.wisherman.model.Wish;
 import com.example.wisherman.model.WishList;
 import com.example.wisherman.repositories.WishRepository;

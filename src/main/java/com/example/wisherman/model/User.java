@@ -2,9 +2,6 @@ package com.example.wisherman.model;
 
 import org.apache.logging.log4j.util.Strings;
 
-import java.util.HashMap;
-import java.util.Objects;
-
 public class User {
     private int userID;
     private String username;

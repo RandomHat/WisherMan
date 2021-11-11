@@ -1,7 +1,4 @@
 package com.example.wisherman.repositories;
-
-import com.example.wisherman.model.User;
-import com.example.wisherman.model.Wish;
 import com.example.wisherman.model.WishList;
 import com.example.wisherman.utlility.DBConnection;
 import org.springframework.stereotype.Repository;
@@ -84,27 +81,6 @@ public class WishListRepository {
             System.out.println(e.getMessage());
         }
         return wishList;
-    }
-
-    public boolean addUserToDB(User user) {
-        PreparedStatement pstmt = null;
-
-        try {
-            pstmt = conn.prepareStatement("INSERT INTO sql11448423.users (username, password, first_name, last_name, email) VALUES (?, ?, ?, ?, ?)");
-
-
-            pstmt.setString(1, user.getUsername());
-            pstmt.setString(2, user.getPassword());
-            pstmt.setString(3, user.getFirstName());
-            pstmt.setString(4, user.getLastName());
-            pstmt.setString(5, user.getEmail());
-
-            return pstmt.execute();
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            return false;
-        }
     }
 
     public boolean addWishListToDB(WishList wishlist) {

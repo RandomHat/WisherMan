@@ -1,7 +1,6 @@
 package com.example.wisherman.service;
 
 import com.example.wisherman.model.User;
-import com.example.wisherman.model.Wish;
 import com.example.wisherman.model.WishList;
 import com.example.wisherman.repositories.WishListRepository;
 
