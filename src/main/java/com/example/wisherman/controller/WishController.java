@@ -21,7 +21,6 @@ import java.util.Map;
 @Controller
 public class WishController {
 
-    private WishRepository wishrepository = new WishRepository();
     private WishService wishService = new WishService();
     private WishListService wishListService = new WishListService();
     private UserService userService = new UserService();
@@ -60,7 +59,8 @@ public class WishController {
 
         if (wish.isValidWish(wish)) {
 
-            wishrepository.addWishToWishList(wish); // adding wish to database
+            wishService.addWishToDB(wish); // adding wish to database
+            //wishrepository.addWishToWishList(wish);
                 redirectAttributes.addFlashAttribute("wish", wish);
                 System.out.println("inside true. " + "Added wish: " + wish); //debugging. print added wish
                 return new RedirectView("/user-panel/new-wish-success", true);
@@ -86,7 +86,7 @@ public class WishController {
 
     @GetMapping("/wishlist/show-all-wishes")
     public String showAllWishes(Model model) {
-        List<Wish> listOfWishes = wishrepository.getAllWishes();
+        List<Wish> listOfWishes = wishService.getAllWishes();
         model.addAttribute("listOfWishes", listOfWishes);
         return "show-all-wishes";
     }

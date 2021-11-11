@@ -18,4 +18,12 @@ public class WishService {
     public List<Wish> getWishListWishes(int listID){
         return wishes.getWishListWishes(listID);
     }
+
+    public boolean addWishToDB(Wish wish) {
+        return wishes.addWishToWishList(wish);
+    }
+
+    public List<Wish> getAllWishes(){
+        return wishes.getAllWishes();
+    }
 }
