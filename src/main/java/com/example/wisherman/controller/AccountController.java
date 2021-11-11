@@ -56,5 +56,15 @@ public class AccountController {
         } else
             return "Account/login";
     }
+
+    @GetMapping("/logout")
+    public String logout (HttpSession session){
+
+        if (session != null){
+            System.out.println(((User)session.getAttribute("user")).getUsername() + " Has succesfully logged out");
+            session.invalidate();
+        }
+        return "redirect:/";
+    }
 }
 

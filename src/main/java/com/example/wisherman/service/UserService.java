@@ -54,13 +54,22 @@ public class UserService {
     public int getUserSessionID(HttpSession session){
         if (session.getAttribute("user") == null || session.isNew()) {
 
-            System.out.println("SESSION NOT SET. NULL!! Default to 1");
+            System.out.println("SESSION NOT SET. NULL!! Default to -1");
 
             //session.setAttribute("user", userRepository.getUser(2));
 
             return -1;
         }
         return ((User)session.getAttribute("user")).getUserID();
+    }
+
+    public User getUserSessionUser(HttpSession session){        //redundant
+        User user = new User();
+        if (session.getAttribute("user") == null || session.isNew()) {
+            System.out.println("SESSION NOT SET. NULL!! Default to empty User");
+            return user;
+        }
+        return (((User)session.getAttribute("user")));
     }
 
 
