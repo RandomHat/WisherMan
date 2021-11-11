@@ -67,6 +67,7 @@ public class WishController {
         }
     }
 
+
     @GetMapping("/user-panel/new-wish-success") // return til user-panel/wishlist i HTML.
     public String createWishSuccess(HttpServletRequest request, Model model)   {
         Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
@@ -79,6 +80,7 @@ public class WishController {
         }
     }
 
+
     @GetMapping("/wishlist/show-all-wishes")
     public String showAllWishes(Model model) {
         List<Wish> listOfWishes = wishrepository.getAllWishes();
@@ -86,6 +88,7 @@ public class WishController {
         return "show-all-wishes";
     }
 
+    
     @GetMapping("/user/wishlist")
     public String shareWishlist(@RequestParam (defaultValue = "0") String listId, Model model ){
         int wishlistId = Integer.parseInt(listId);
@@ -108,7 +111,4 @@ public class WishController {
     }
 
  */
-
-
-
 }

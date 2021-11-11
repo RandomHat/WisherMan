@@ -2,13 +2,10 @@ package com.example.wisherman.model;
 
 import org.apache.logging.log4j.util.Strings;
 
-import java.util.ArrayList;
-
 public class WishList {
     private int idwishlist;
     private String listName;
     private int userid;
-    private ArrayList<Wish> wishes;
 
     public WishList(int idwishlist, String listName, int userid) {
         this.idwishlist = idwishlist;
@@ -17,23 +14,6 @@ public class WishList {
     }
 
     public WishList(){}
-
-    public void addWish(Wish wishToAdd){
-        wishes.add(wishToAdd);
-    }
-
-    public ArrayList<Wish> getWishes() {
-        return wishes;
-    }
-
-    public void deleteWish(Wish wishToRemove){
-        for(Wish wish : wishes){
-            if(wishToRemove.equals(wish)){
-                wishes.remove(wish);
-                break;
-            }
-        }
-    }
 
     public int getIdwishlist() {
         return idwishlist;
@@ -69,7 +49,6 @@ public class WishList {
                 "idwishlist=" + idwishlist +
                 ", listName='" + listName + '\'' +
                 ", userid=" + userid +
-                ", wishes=" + wishes +
                 '}';
     }
 }

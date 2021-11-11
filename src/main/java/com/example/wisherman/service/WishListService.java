@@ -15,8 +15,8 @@ public class WishListService {
         User user = (User) session.getAttribute("user");
         return wishLists.getUserWishLists(user.getUserID());
     }
-    public WishList getWishList(int listId){
 
+    public WishList getWishList(int listId){
         return wishLists.getWishList(listId);
     }
 

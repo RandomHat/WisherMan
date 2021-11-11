@@ -75,17 +75,6 @@ public class WishListController {
             return new RedirectView("/user-panel", true);
         }
     }
-    /*
-    @GetMapping("/wishlist/")
-    public String wishListGet(){
-        return "wishlist";
-    }
-
-     */
-
-
-
-
 
      @GetMapping("/user-panel/new-wishlist-success") //link i html til wishlist.
     public String newWishListGetSuccess(HttpServletRequest request, Model model){

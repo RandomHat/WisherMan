@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class AccountController {
+
     UserService userService = new UserService();
 
     @GetMapping("/new-account")
