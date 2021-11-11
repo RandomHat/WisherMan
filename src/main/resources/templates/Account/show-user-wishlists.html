@@ -21,13 +21,13 @@
             <th>Wishlist ID</th>
             <th>Wishlist Title</th>
             <th>Wishlist Owner ID</th>
+            <th>Shareable Link</th>
         </tr>
         <tr th:each="wishlist : ${wishListList}">
             <td th:text="${wishlist.getIdwishlist}"></td>
             <td> <a th:href="'/user-panel/wishlist?listId=' + ${wishlist.getIdwishlist()}" th:text="${wishlist.getListName}"></a></td>
             <td th:text="${wishlist.getUserid}"></td>
-            <td>
-            </td>
+            <td> <a target="_blank" th:href="'/user/wishlist?listId=' + ${wishlist.getIdwishlist()}"> Share Me!</a></td>
         </tr>
     </table>
     <br>
@@ -38,6 +38,10 @@
 
         <button type="submit">Create</button>
     </form>
+    <br>
+    <h1>Share all your wishlists:</h1>
+    <br>
+    <span> <a target="_blank" th:href="'/user?iD=' + ${userID}"> Share Wishlists!</a></span>
 </div>
 </body>
 </html>

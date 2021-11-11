@@ -41,7 +41,7 @@ public class Wish {
                 ", link='" + url + '\'' +
                 ", price='" + price + '\'' +
                 ", reserved=" + reserved +
-                '}';
+                ", wishlistid=" + wishListID + '}';
     }
 
     @Override

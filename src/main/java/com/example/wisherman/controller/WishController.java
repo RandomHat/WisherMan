@@ -34,8 +34,7 @@ public class WishController {
     public String createWishGet(HttpSession session, Model model, @RequestParam int listId) {
 
         WishList wishlist = wishListService.getWishList(listId);
-
-        wishListService.getWishList(listId);
+        session.setAttribute("wishlist",wishlist);
 
         if ( wishlist.getUserid() == userService.getUserSessionID(session)) {
             model.addAttribute("wish", new Wish());
@@ -53,10 +52,14 @@ public class WishController {
     @PostMapping("/user-panel/wishlist")
     public RedirectView createWishPost(
             @ModelAttribute("wish") Wish wish,
-            RedirectAttributes redirectAttributes) {
+            RedirectAttributes redirectAttributes,
+            HttpSession session) {
+        wish.setWishListID(((WishList) session.getAttribute("wishlist")).getIdwishlist());
         System.out.print(wish);
         System.out.println(wish.isValidWish(wish));
+
         if (wish.isValidWish(wish)) {
+
             wishrepository.addWishToWishList(wish); // adding wish to database
                 redirectAttributes.addFlashAttribute("wish", wish);
                 System.out.println("inside true. " + "Added wish: " + wish); //debugging. print added wish
