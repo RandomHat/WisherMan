@@ -30,10 +30,10 @@ public class AccountController {
         );
         if(userService.userIsValid(currentUser)) {
             userService.saveUser(currentUser);
-            return"redirect:/";
+            return"redirect:/login";
         }else{
             System.out.println("error User not created"); //TODO handle redirect ved forkert bruger input?
-            return "redirect:/";
+            return "redirect:/new-account";
         }
     }
 
@@ -52,7 +52,6 @@ public class AccountController {
 
             System.out.println(((User)session.getAttribute("user")).toString());
             return "redirect:/user-panel";
-            //return "redirect:/user-panel";
         } else
             return "Account/login";
     }
